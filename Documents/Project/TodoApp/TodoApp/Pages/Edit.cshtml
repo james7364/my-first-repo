@@ -1,0 +1,46 @@
+﻿@page "{id:int}"
+@model EditModel
+@{
+    ViewData["Title"] = "Edit Task";
+}
+
+<div class="container mt-4">
+    <h2>Edit Task</h2>
+
+    <div class="card p-4 shadow-sm mt-3">
+        <form method="post">
+            <input type="hidden" asp-for="TaskItem.Id" />
+            <input type="hidden" asp-for="TaskItem.UserId" />
+            <input type="hidden" asp-for="TaskItem.IsCompleted" />
+
+            <div class="mb-3">
+                <label asp-for="TaskItem.Title" class="form-label"></label>
+                <input asp-for="TaskItem.Title" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label asp-for="TaskItem.Description" class="form-label"></label>
+                <textarea asp-for="TaskItem.Description" class="form-control"></textarea>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="TaskItem.Priority" class="form-label">Priority</label>
+                    <select asp-for="TaskItem.Priority" class="form-select">
+                        <option value="1">Low</option>
+                        <option value="2">Medium</option>
+                        <option value="3">High</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="TaskItem.ColorHex" class="form-label">Card Color</label>
+                    <input asp-for="TaskItem.ColorHex" type="color" class="form-control form-control-color" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="TaskItem.DueDate" class="form-label">Due Date</label>
+                    <input asp-for="TaskItem.DueDate" type="date" class="form-control" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a asp-page="./Tasks" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
